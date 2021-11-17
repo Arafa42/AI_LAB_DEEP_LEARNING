@@ -25,18 +25,10 @@ def create_image(options: Options) -> torch.Tensor:
 def lin_layer_forward(weights: torch.Tensor, random_image: torch.Tensor) -> torch.Tensor:
     """TODO: implement this method"""
     multiplicationArray = []
-    sumTotal = 0.0
-
-    for a in weights.tolist():
-        for b in random_image.tolist():
-            print(a)
-            print(b)
-            multiplicationArray.append(a*b)
-
-    for e in multiplicationArray:
-        sumTotal += e
-
-    return torch.squeeze(torch.FloatTensor([e]))
+    p = 0.0
+    multiplication = torch.multiply(weights,random_image)
+    sum = torch.sum(multiplication)
+    return torch.squeeze(torch.FloatTensor([sum]))
 
 
 def tensor_network():
