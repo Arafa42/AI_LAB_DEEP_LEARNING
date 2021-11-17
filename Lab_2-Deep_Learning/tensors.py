@@ -36,7 +36,7 @@ def tensor_network():
     input_tensor = torch.FloatTensor([0.4, 0.8, 0.5, 0.3], device=options.device)
     weights = torch.FloatTensor([0.1, -0.5, 0.9, -1], device=options.device)
     """START TODO:  ensure that the tensor 'weights' saves the computational graph and the gradients after backprop"""
-
+    plot_tensor(weights, "weights")
     """END TODO"""
 
     # remember the activation a of a unit is calculated as follows:
@@ -60,7 +60,7 @@ def tensor_network():
     print(f"The gradients are: {weights.grad}")
     """START TODO: implement the update step with a learning rate of 0.5"""
     # use tensor operations, recall the following formula we've seen during class: x <- x - alpha * x'
-
+    weights = torch.subtract(weights, torch.multiply(weights, 0.5))
     """END TODO"""
     print(f"The new weights are: {weights}\n")
 
