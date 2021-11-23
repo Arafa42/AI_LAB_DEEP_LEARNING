@@ -27,9 +27,9 @@ if __name__ == "__main__":
     # define the opimizer
     # (visit https://pytorch.org/docs/stable/optim.html?highlight=torch%20optim#module-torch.optim for more info)
     optimizer = torch.optim.SGD(model.parameters(), lr=options.lr, momentum=0.9)
-
     # train the model
-
+    print("Training the model...\n")
+    model.train()
 
     """END TODO"""
 
