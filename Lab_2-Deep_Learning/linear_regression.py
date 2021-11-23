@@ -26,9 +26,10 @@ if __name__ == "__main__":
     model = models.models.LinearRegression()
     # define the opimizer
     # (visit https://pytorch.org/docs/stable/optim.html?highlight=torch%20optim#module-torch.optim for more info)
+    optimizer = torch.optim.SGD(model.parameters(), lr=options.lr, momentum=0.9)
 
     # train the model
-    optimizer = torch.optim.SGD(model, lr=0.01, momentum=0.9)
+
 
     """END TODO"""
 
