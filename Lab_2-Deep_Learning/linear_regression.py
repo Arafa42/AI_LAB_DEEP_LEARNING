@@ -29,7 +29,7 @@ if __name__ == "__main__":
     optimizer = torch.optim.SGD(model.parameters(), lr=options.lr, momentum=0.9)
     # train the model
     print("Training the model...\n")
-    model.train()
+    utils.train_lin_model(model, optimizer, train_dataloader, options)
 
     """END TODO"""
 

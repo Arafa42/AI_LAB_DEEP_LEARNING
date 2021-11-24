@@ -91,7 +91,7 @@ def tensor_network():
     weights = torch.FloatTensor([0.1, -0.5, 0.9, -1], device=options.device)
 
     """START TODO:  ensure that the tensor 'weights' saves the computational graph and the gradients after backprop"""
-    weights.requires_grad_()
+    weights.requires_grad()
     plot_tensor(weights.detach(), "new graph title")
     """END TODO"""
 
