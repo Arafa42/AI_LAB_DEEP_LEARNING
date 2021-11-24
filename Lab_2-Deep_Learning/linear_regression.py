@@ -23,10 +23,11 @@ if __name__ == "__main__":
 
     """START TODO: fill in the missing parts as mentioned by the comments."""
     # create a LinearRegression instance named model
-    model = models.models.LinearRegression()
+    model = LinearRegression()
     # define the opimizer
     # (visit https://pytorch.org/docs/stable/optim.html?highlight=torch%20optim#module-torch.optim for more info)
-    optimizer = torch.optim.SGD(model.parameters(), lr=options.lr, momentum=0.9)
+    print("model params: ", model.parameters().__str__())
+    optimizer = torch.optim.SGD(model.parameters(), lr=0.0001, momentum=0.9)
     # train the model
     print("Training the model...\n")
     utils.train_lin_model(model, optimizer, train_dataloader, options)

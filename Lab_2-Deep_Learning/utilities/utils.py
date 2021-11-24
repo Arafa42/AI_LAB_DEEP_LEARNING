@@ -39,9 +39,12 @@ def train_lin_model(model: LinearRegression, optimizer: torch.optim.Optimizer,
             size, price = data[:, 0].unsqueeze(1).to(options.device), data[:, 1].unsqueeze(1).to(options.device)
             """START TODO: implement some missing parts. look at the comments to see what needs to be done."""
             # Forward the size data through the model
-            forward = model.forward(size)
+            #print("Size in training", size)
+            forward = model.linear_layer.forward(size)
+            print("Forward in training", forward)
             # calculate the loss, use your self created mse loss
             loss = mse(forward, price)
+            print("Loss in training: ", loss)
             # As mentioned before, the grads always needs to be zeroed before backprop (use your optimizer to do this)
             optimizer.zero_grad()
             # propagate the loss backward
@@ -60,6 +63,8 @@ def test_lin_reg_model(model: LinearRegression, test_data: DataLoader):
             size, price = data[:, 0].unsqueeze(1), data[:, 1].unsqueeze(1)
             estimated_price = model(size)
             loss = loss + torch.sqrt(mse(estimated_price, price))
+            #print("Loss: ", loss)
+            #print("dataset: ", test_data.dataset)
         print(f'Avg error/example: € {loss / len(test_data.dataset) :.2f}\n')
 
 
