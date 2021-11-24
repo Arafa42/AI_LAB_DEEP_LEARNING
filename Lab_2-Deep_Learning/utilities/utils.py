@@ -29,7 +29,7 @@ def plot_rgb_tensor(to_plot: torch.Tensor, title: str):
     fig = plt.figure()
     plt.title(title)
     plt.imshow(transforms.ToPILImage()(to_plot), interpolation="None")
-    fig.show()
+    plt.show()
 
 
 def train_lin_model(model: LinearRegression, optimizer: torch.optim.Optimizer,
@@ -45,7 +45,7 @@ def train_lin_model(model: LinearRegression, optimizer: torch.optim.Optimizer,
             # As mentioned before, the grads always needs to be zeroed before backprop (use your optimizer to do this)
             optimizer.zero_grad()
             # propagate the loss backward
-
+            mse.backward()
             # use your optimizer to perform an update step
             optimizer.step()
             """END TODO"""
@@ -94,7 +94,7 @@ def test_lin_reg_plot(model: LinearRegression, test_data: DataLoader, options: L
     plt.legend(["Unknown function f(x)", "Linear regression line", "Real data samples", "Estimated data samples"])
     plt.plot()
 
-    fig.show()
+    plt.show()
 
 
 def train_classification_model(model: Classifier, optimizer: torch.optim.Optimizer,
@@ -159,7 +159,7 @@ def classify_images(model: Classifier, dataset: MNISTDataset, options: Classific
             plt.title(f"y: {y[i]}, estimation: {predicted[i].item()}")
             plt.xticks([])
             plt.yticks([])
-        fig.show()
+        plt.show()
 
 
 def not_implemented() -> str:

@@ -22,7 +22,7 @@ class LinearRegression(nn.Module):
     def __init__(self):
         super().__init__()
         """START TODO: replace None with a Linear layer"""
-        self.linear_layer = nn.Linear(1, 1, True)
+        self.linear_layer = nn.Linear(1, 1)
         """END TODO"""
 
     def forward(self, x: torch.Tensor):
