@@ -8,7 +8,12 @@ def mse(input_tensor: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
     #MSE = np.square(np.subtract(input_tensor,target)).mean()
 
     # Solution 2
-    loss = torch.nn.MSELoss()
-    MSE = torch.mean(loss(input_tensor, target))
+    #loss = torch.nn.MSELoss()
+    #MSE = torch.mean(loss(input_tensor, target))
 
-    return MSE
+    # Solution 3
+    temp = input_tensor - target
+    o = torch.pow(temp, 2)
+    out = torch.mean(o)
+
+    return out

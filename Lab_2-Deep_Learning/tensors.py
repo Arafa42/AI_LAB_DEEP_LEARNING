@@ -79,7 +79,7 @@ def lin_layer_forward(weights: torch.Tensor, random_image: torch.Tensor) -> torc
 
     multiplication = torch.multiply(weights, random_image)
     tot = torch.sum(multiplication)
-    return torch.squeeze(torch.FloatTensor([tot]))
+    return tot
 
 
 def tensor_network():
@@ -91,8 +91,7 @@ def tensor_network():
     weights = torch.FloatTensor([0.1, -0.5, 0.9, -1], device=options.device)
 
     """START TODO:  ensure that the tensor 'weights' saves the computational graph and the gradients after backprop"""
-    weights.requires_grad()
-    plot_tensor(weights.detach(), "new graph title")
+    weights.requires_grad = True
     """END TODO"""
 
     # remember the activation a of a unit is calculated as follows:
@@ -110,18 +109,15 @@ def tensor_network():
     print(f"The current weights are: {weights}")
 
     """START TODO: the loss needs to be backpropagated"""
-    loss.requires_grad = True
     loss.backward()
-    plot_tensor(loss.detach(), "Loss")
     """END TODO"""
 
     print(f"The gradients are: {weights.grad}")
 
     """START TODO: implement the update step with a learning rate of 0.5"""
     # use tensor operations, recall the following formula we've seen during class: x <- x - alpha * x'
-    weights = torch.subtract(weights, torch.multiply(weights, 0.5))
+    weights = torch.subtract(weights, (.5 * weights.grad))
     """END TODO"""
-
     print(f"The new weights are: {weights}\n")
 
     # What happens if we forward through our layer again?
