@@ -110,7 +110,9 @@ def tensor_network():
     print(f"The current weights are: {weights}")
 
     """START TODO: the loss needs to be backpropagated"""
-    # todo
+    loss.requires_grad = True
+    loss.backward()
+    plot_tensor(loss.detach(), "Loss")
     """END TODO"""
 
     print(f"The gradients are: {weights.grad}")
