@@ -18,7 +18,7 @@ if __name__ == "__main__":
     # create a Classifier instance named model
     model = Classifier(options)
     # define the opimizer
-    optimizer = torch.optim.SGD(model.parameters(), options.lr, momentum - 0.9)
+    optimizer = torch.optim.SGD(model.parameters(), options.lr, 0.9)
     # train the model
     utils.train_classification_model(model, optimizer, dataset, options)
     """END TODO"""

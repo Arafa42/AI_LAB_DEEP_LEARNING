@@ -105,7 +105,7 @@ def test_lin_reg_plot(model: LinearRegression, test_data: DataLoader, options: L
 def train_classification_model(model: Classifier, optimizer: torch.optim.Optimizer,
                                dataset: MNISTDataset, options: ClassificationOptions):
     """START TODO: select an appropriate criterion (loss function)"""
-    criterion = None
+    criterion = torch.nn.CrossEntropyLoss()
     """END TODO"""
     for epoch in range(options.num_epochs):
         running_loss = 0
