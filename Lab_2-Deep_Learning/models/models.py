@@ -40,16 +40,15 @@ class Classifier(nn.Module):
             include the input and output as well).
         """
         self.layer1 = nn.Sequential(
-            nn.Linear(),
+            nn.Linear(options.hidden_sizes[0], options.hidden_sizes[1]),
             nn.ReLU()
         )
         self.layer2 = nn.Sequential(
-            nn.Linear(),
+            nn.Linear(options.hidden_sizes[1],options.hidden_sizes[2]),
             nn.ReLU()
         )
         self.layer3 = nn.Sequential(
-            nn.Linear(),
-            nn.ReLU()
+            nn.Linear(options.hidden_sizes[2],options.hidden_sizes[3])
         )
         """END TODO"""
 

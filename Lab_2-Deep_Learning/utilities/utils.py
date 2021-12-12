@@ -115,15 +115,16 @@ def train_classification_model(model: Classifier, optimizer: torch.optim.Optimiz
             # Note: x does not have the correct shape,
             # it should become (batch_size, -1), where the size -1 is inferred from other dimensions
             # (see TORCH.TENSOR.VIEW on the PyTorch documentation site)
-
+            x = torch.reshape(x, (x.shape[0], -1))
+            output = model(x)
             # calculate the loss, use your previously defined criterion
-            loss = None
+            loss = criterion(output, y)
             # zero out all gradients
-
+            optimizer.zero_grad()
             # propagate the loss backward
-
+            loss.backward()
             # use your optimizer to perform an update step
-
+            optimizer.step()
             """END TODO"""
             running_loss += loss.item()
         print(f'epoch [{epoch + 1}/{options.num_epochs}]: ', end="")
